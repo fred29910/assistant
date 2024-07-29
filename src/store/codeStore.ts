@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-import { Position } from "../wasm_exec"
+import { Position } from "../wasmLoader/goFuncs";
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { genId } from "../utils/id";
 

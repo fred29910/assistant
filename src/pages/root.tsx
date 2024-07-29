@@ -1,27 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { LoadWasm } from "../wasmLoader/loadWasm";
 
-import { loadWasm } from './../wasmModule';
-import GoWasm from '../go_exec'; // Import the generated TypeScript types
 
 
 export default function Root() {
-  const [sum, setSum] = useState<number | null>(null);
+    useEffect(() => {
+    }, []);
 
-  useEffect(() => {
-      const runWasm = async () => {
-          const wasm: typeof GoWasm = await loadWasm();
-          const result = wasm.add(3, 4);
-          setSum(result);
-      };
-      runWasm();
-  }, []);
+    return (
+        <LoadWasm>
+            <div className="App">
+                <header className="App-header">
 
-  return (
-      <div className="App">
-          <header className="App-header">
-              <h1>React WebAssembly Example</h1>
-              {sum !== null ? <p>Sum of 3 and 4 is: {sum}</p> : <p>Loading...</p>}
-          </header>
-      </div>
-  );
+                    <button onClick={() => { alert(window.add(2, 3)); }}>
+                        Click here to invoke WebAssembly!
+                    </button>
+                    <a
+                        className="App-link"
+                        href="https://reactjs.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Learn React
+                    </a>
+                </header>
+            </div>
+        </LoadWasm>
+
+    );
 }

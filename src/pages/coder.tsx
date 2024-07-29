@@ -3,8 +3,7 @@ import { Helmet } from 'react-helmet';
 
 
 import CodeEditor from "../components/Coder";
-import { loadWasm } from './../wasmModule';
-import GoWasm from '../go_exec'; // Import the generated TypeScript types
+import { LoadWasm } from "../wasmLoader/loadWasm";
 
 
 export default function Coder() {
@@ -12,10 +11,8 @@ export default function Coder() {
 
     useEffect(() => {
         const runWasm = async () => {
-            const wasm: typeof GoWasm = await loadWasm();
-            const result = wasm.add(3, 4);
-            setSum(result);
-            console.log("wasm", sum)
+            console.log("runWasm", sum);
+            setSum(1)
         };
         runWasm();
     }, []);
@@ -25,7 +22,10 @@ export default function Coder() {
             <Helmet>
                 <title>Coder</title>
             </Helmet>
-            <CodeEditor />
+            <LoadWasm>
+                <CodeEditor />
+            </LoadWasm>
+
         </>
     );
 }

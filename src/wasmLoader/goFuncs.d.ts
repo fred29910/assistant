@@ -1,12 +1,6 @@
-// wasm_exec.d.ts
-declare class Go {
-    importObject: any;
-    run(instance: WebAssembly.Instance): void;
-}
-
-interface GoWasm {
-    add(a: number, b: number): number;
-    parser(a: string): string;
+type gofunc = (...any) => any
+export interface GoFuncs {
+  add: (num1: number, num2: number) => number
 }
 
 export interface ParserReq {
