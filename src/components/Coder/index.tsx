@@ -77,7 +77,8 @@ const CodeEditor = () => {
                 setOptions={{
                     enableBasicAutocompletion: true,
                     enableLiveAutocompletion: true,
-                    enableSnippets: true
+                    enableSnippets: true,
+                    readOnly: readOnley
                 }}
                 style={{ width: '100%', height: '300px' }}
             />
