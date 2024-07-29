@@ -2,6 +2,7 @@
   margin: 0;
   padding: auto;
   width: 100vw;
+  min-height: 100vh;
 }
 
 

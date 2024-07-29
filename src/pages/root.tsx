@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import CodeEditor from "../components/Coder";
 
 import { loadWasm } from './../wasmModule';
 import GoWasm from '../go_exec'; // Import the generated TypeScript types

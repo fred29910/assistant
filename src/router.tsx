@@ -6,6 +6,7 @@ import { Router } from "@remix-run/router";
 import ErrorPage from "./error-page";
 import MainLayout from "./components/layout/Layout";
 import Root from "./pages/root";
+import Coder from "./pages/coder";
 
 const router: Router = createBrowserRouter([
     {
@@ -19,6 +20,11 @@ const router: Router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: "/coder",
+        element: <Coder />,
+        errorElement: <ErrorPage />,
+    }
 ]);
 
 export default router

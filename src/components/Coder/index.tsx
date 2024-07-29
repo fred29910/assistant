@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import AceEditor from 'react-ace';
 
+import styles from './index.module.css'
 // 引入 Ace Editor 的主题和模式
 // import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/mode-golang';
@@ -19,6 +20,7 @@ func main(){
 
 
     const [contextMenuVisible, setContextMenuVisible] = useState(false);
+    const [readOnley, setReadOnley] = useState(false);
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
     const editorRef = useRef<AceEditor>(null);
 
@@ -50,14 +52,14 @@ func main(){
 
     const runCode = () => {
         try {
-            console.log(code);
+            setReadOnley(!readOnley);
         } catch (e) {
             console.error(e);
         }
     };
 
     return (
-        <div>
+        <div className={styles.container}>
             <AceEditor
                 ref={editorRef}
                 mode="golang"
@@ -87,13 +89,11 @@ func main(){
                     }}
                 >
                     <ul style={{ listStyleType: 'none', padding: '5px', margin: 0 }}>
-                        <li style={{ padding: '8px 12px', cursor: 'pointer' }} onClick={() => handleClick()}>Option 1</li>
-                        <li style={{ padding: '8px 12px', cursor: 'pointer' }} onClick={() => alert('Option 2 selected')}>Option 2</li>
-                        <li style={{ padding: '8px 12px', cursor: 'pointer' }} onClick={() => alert('Option 3 selected')}>Option 3</li>
+                        <li style={{ padding: '8px 12px', cursor: 'pointer' }} onClick={() => handleClick()}>parser</li>
                     </ul>
                 </div>
             )}
-            <button onClick={runCode}>Parser</button>
+            <button onClick={runCode}>{readOnley?"Parser": "Edit"}</button>
         </div>
     );
 };
