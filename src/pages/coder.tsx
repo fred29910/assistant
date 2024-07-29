@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { Helmet } from 'react-helmet';
+
+
 import CodeEditor from "../components/Coder";
 import { loadWasm } from './../wasmModule';
 import GoWasm from '../go_exec'; // Import the generated TypeScript types
@@ -19,6 +22,9 @@ export default function Coder() {
 
     return (
         <>
+            <Helmet>
+                <title>Coder</title>
+            </Helmet>
             <CodeEditor />
         </>
     );

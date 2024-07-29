@@ -6,7 +6,7 @@ import styles from './index.module.css'
 // import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/mode-golang';
 import 'ace-builds/src-noconflict/theme-monokai';
-import { useCodeStore,setFile } from '../../store/codeStore';
+import { useCodeStore, setFile } from '../../store/codeStore';
 
 // 可选：引入更多的模式和主题
 // import 'ace-builds/src-noconflict/mode-python';
@@ -17,7 +17,7 @@ const CodeEditor = () => {
 
     const context = useCodeStore((state) => state.file)
 
-    
+
     const [contextMenuVisible, setContextMenuVisible] = useState(false);
     const [readOnley, setReadOnley] = useState(false);
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
@@ -37,13 +37,17 @@ const CodeEditor = () => {
             const editor = editorRef.current.editor;
             editor.container.addEventListener('contextmenu', handleContextMenu);
         }
-        setCode(context)
+        if (context && context.trim() !== "") {
+            setCode(context)
+        }
         return () => {
             if (editorRef !== null && editorRef.current !== null && editorRef.current.editor !== null) {
                 const editor = editorRef.current.editor;
                 editor.container.removeEventListener('contextmenu', handleContextMenu);
             }
-            setFile(code);
+            if (code && code.trim() !== "") {
+                setFile(code);
+            }
         };
     }, []);
 
