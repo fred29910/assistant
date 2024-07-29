@@ -1,6 +1,7 @@
 type gofunc = (...any) => any
 export interface GoFuncs {
-  add: (num1: number, num2: number) => number
+  add: (num1: number, num2: number) => number;
+  parser: (input: string) => Promise<string>;
 }
 
 export interface ParserReq {
