@@ -1,29 +1,22 @@
-import { useEffect } from "react";
 import { LoadWasm } from "../wasmLoader/loadWasm";
+import CodeBlock from "../components/Coder/pcode";
 
 
 
 export default function Root() {
-    useEffect(() => {
-    }, []);
+    const codeString = `
+  def hello_world():
+      print("Hello, world!")
+  
+  hello_world()
+  `;
+
 
     return (
         <LoadWasm>
             <div className="App">
-                <header className="App-header">
-
-                    <button onClick={() => { alert(window.add(2, 3)); }}>
-                        Click here to invoke WebAssembly!
-                    </button>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-                    </a>
-                </header>
+            <h1>Code Highlighting with PrismJS</h1>
+            <CodeBlock code={codeString} language="python" />
             </div>
         </LoadWasm>
 
