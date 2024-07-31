@@ -30,6 +30,10 @@ const CodeEditor = () => {
     };
 
     const handleClick = () => {
+        const result = window.add(2, 3);
+        console.log(result);
+        const context = editorRef.current?.editor.getSelectedText();
+        console.log(context);
         setContextMenuVisible(false);
     };
     useEffect(() => {
