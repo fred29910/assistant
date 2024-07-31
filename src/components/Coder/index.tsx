@@ -29,11 +29,13 @@ const CodeEditor = () => {
         setContextMenuVisible(true);
     };
 
-    const handleClick = () => {
-        const result = window.add(2, 3);
-        console.log(result);
+    const handleClick = async () => {
         const context = editorRef.current?.editor.getSelectedText();
         console.log(context);
+        if (context && context.trim() !== "") {
+            const result = await window.parser(context);
+            console.log(result);
+        }
         setContextMenuVisible(false);
     };
     useEffect(() => {
