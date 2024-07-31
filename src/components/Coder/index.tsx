@@ -7,6 +7,7 @@ import styles from './index.module.css'
 import 'ace-builds/src-noconflict/mode-golang';
 import 'ace-builds/src-noconflict/theme-monokai';
 import { useCodeStore, setFile } from '../../store/codeStore';
+import { parser } from '../../wasmLoader/parser';
 
 // 可选：引入更多的模式和主题
 // import 'ace-builds/src-noconflict/mode-python';
@@ -33,7 +34,7 @@ const CodeEditor = () => {
         const context = editorRef.current?.editor.getSelectedText();
         console.log(context);
         if (context && context.trim() !== "") {
-            const result = await window.parser(context);
+            const result = await parser(context);
             console.log(result);
         }
         setContextMenuVisible(false);
